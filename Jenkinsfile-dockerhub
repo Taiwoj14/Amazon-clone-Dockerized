@@ -5,7 +5,7 @@ pipeline {
         timeout(time: 10, unit: 'MINUTES')
      }
     environment {
-    DOCKERHUB_CREDENTIALS = credentials('tj-dockerhub')
+    DOCKERHUB_CREDENTIALS = credentials('taiwo-dockerhub')
     APP_NAME = "josepht05/amazon-taiwo"
     }
     stages { 
@@ -14,14 +14,14 @@ pipeline {
            git branch: 'main', url: 'https://github.com/taiwoj14/Amazon-clone-Dockerized.git'
             }
         }
-      #  // run sonarqube test
-       # stage('Run Sonarqube') {
-           # environment {
-               # scannerHome = tool 'ibt-sonarqube';
+        // run sonarqube test
+        stage('Run Sonarqube') {
+            environment {
+                scannerHome = tool 'ibt-sonarqube';
             }
-           # steps {
-             # withSonarQubeEnv(credentialsId: 'ibt-sonar', installationName: 'IBT sonarqube') {
-               # sh "${scannerHome}/bin/sonar-scanner"
+            steps {
+              withSonarQubeEnv(credentialsId: 'ibt-sonar', installationName: 'IBT sonarqube') {
+                sh "${scannerHome}/bin/sonar-scanner"
               }
             }
         }
