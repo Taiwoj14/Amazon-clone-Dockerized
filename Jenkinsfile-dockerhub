@@ -5,7 +5,7 @@ pipeline {
         timeout(time: 10, unit: 'MINUTES')
      }
     environment {
-    DOCKERHUB_CREDENTIALS = credentials('taiwo-dockerhub')
+    DOCKERHUB_CREDENTIALS = credentials('tj-dockerhub')
     APP_NAME = "josepht05/amazon-taiwo"
     }
     stages { 
